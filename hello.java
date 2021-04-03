@@ -1,5 +1,5 @@
 	
-package com.helloall.main;
+//package com.helloall.main;
 
 public class Hello{
 		
