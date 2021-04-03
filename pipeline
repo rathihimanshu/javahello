@@ -1,0 +1,20 @@
+pipeline {
+    agent any
+    stages {
+        stage('codecheckout') {
+            steps {
+                git 'https://github.com/rathihimanshu/javahello'
+            }
+        }
+        stage('Code Quality Check via SonarQube') {
+        steps {
+            script {
+                def scannerHome = tool 'sonarscanner'; 
+                    withSonarQubeEnv("sonarserver") {
+                        sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=testjavaproject"
+                    }    
+            }
+        }
+        }
+    }
+}
